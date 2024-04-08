@@ -1,5 +1,5 @@
 //starting text
-alert("Please open yur browser console")
+alert("Please open your browser console")
 console.log("Hey there human, lets play rock-paper-scissors(u know the rules right?)")
 //initiate game
 play_game()
