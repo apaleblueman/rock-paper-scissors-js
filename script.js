@@ -1,4 +1,5 @@
 //starting text
+alert("Please open yur browser console")
 console.log("Hey there human, lets play rock-paper-scissors(u know the rules right?)")
 //initiate game
 play_game()
@@ -11,6 +12,7 @@ function play_game(){
     let final_result;
 
     for(i=0;i<5;i++){
+        console.log(`Round ${i+1}`)
         player_choice = getInput()
         pc_choice = getComputerChoice()
         let round_result = play_round(player_choice, pc_choice)
