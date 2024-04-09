@@ -25,7 +25,16 @@ function play_game(){
         console.log("you chose "+player_choice+ " and pc chose "+ pc_choice +" so " + round_result)
     }
     console.log(`Final Score: You:${user_score} PC: ${computer_score}`)
-    final_result = (user_score>computer_score)? "You Won the game!": "Sorry you lost the game"
+    
+    if(user_score>computer_score){
+        final_result = "You Won the game!";
+    }
+    else if(user_score<computer_score){
+        final_result = "Sorry you lost the game";
+    }
+    else{
+        final_result = "It's a Draw!";
+    }
     console.log(final_result)
 
 }
@@ -35,16 +44,17 @@ function play_round(user_choice, computer_choice){
         if (user_choice === "paper" && computer_choice === "rock") {
             
             return "user won";
-        } else if (user_choice === "rock" && computer_choice === "scissor") {
+        } else if (user_choice === "rock" && computer_choice === "scissors") {
         
             return "user won";
-        } else if (user_choice === "scissor" && computer_choice === "paper") {
+        } else if (user_choice === "scissors" && computer_choice === "paper") {
         
             return "user won";
         } else if(user_choice === computer_choice){
         
             return "It's a draw"
-        } else {
+        }
+        else {
             
             return "pc won";
         }
