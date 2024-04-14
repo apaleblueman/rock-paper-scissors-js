@@ -1,41 +1,47 @@
-//starting text
-alert("Please open your browser console")
-console.log("Hey there human, lets play rock-paper-scissors(u know the rules right?)")
 //initiate game
 play_game()
-
 //functions
-
 function play_game(){   
     let user_score = 0 ;
     let computer_score = 0;
-    let final_result;
-
-    for(i=0;i<5;i++){
-        console.log(`Round ${i+1}`)
-        player_choice = getInput()
-        pc_choice = getComputerChoice()
-        let round_result = play_round(player_choice, pc_choice)
-        if(round_result === "user won"){
-            user_score+=1
-        }
-        else if(round_result === "pc won"){
-            computer_score+=1
-        }
-        console.log("you chose "+player_choice+ " and pc chose "+ pc_choice +" so " + round_result)
-    }
-    console.log(`Final Score: You:${user_score} PC: ${computer_score}`)
+   
+    let options = document.querySelector("#options");
     
-    if(user_score>computer_score){
-        final_result = "You Won the game!";
-    }
-    else if(user_score<computer_score){
-        final_result = "Sorry you lost the game";
-    }
-    else{
-        final_result = "It's a Draw!";
-    }
-    console.log(final_result)
+    options.addEventListener('click', (event)=>{
+        target = event.target;
+        if(user_score < 5 && computer_score < 5){
+        let userChoice = target.id;
+        let result = document.querySelector("#result");
+        let computerChoice = getComputerChoice();
+        result.textContent = play_round(userChoice, computerChoice);
+        let score = document.querySelector("#score")
+    
+        if(result.textContent === "user won"){
+            user_score ++;
+            score.textContent = `you(${userChoice}): ${user_score} pc(${computerChoice}): ${computer_score}`
+        }
+        else if(result.textContent === "pc won"){
+            computer_score ++;
+            score.textContent = `you(${userChoice}): ${user_score} pc(${computerChoice}): ${computer_score}`
+        }
+    
+        }
+        else{
+            if(user_score>computer_score){
+                score.textContent = "You Won! Dont let the machines take over!"
+            }
+            else if(user_score<computer_score){
+                score.textContent = "You Lost! Humanity is Doomed!"
+            }
+            else if(user_score===computer_score)
+            {
+                score.textContent = "It's a Draw! lets call it a cease fire while we still have the time!🇵🇸🇺🇦"
+            }
+            
+        }
+        
+
+    })
 
 }
 
@@ -61,11 +67,7 @@ function play_round(user_choice, computer_choice){
     }
     
 //get user input
-function getInput(){
-    let user_choice = prompt("Enter your choice(rock paper or scissors)")
-    user_choice = user_choice.toLowerCase()
-    return user_choice
-}
+
 //get computer choice
 function getComputerChoice(){
     choice = Math.floor(Math.random() * 3)
