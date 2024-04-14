@@ -33,10 +33,7 @@ function play_game(){
             else if(user_score<computer_score){
                 score.textContent = "You Lost! Humanity is Doomed!"
             }
-            else if(user_score===computer_score)
-            {
-                score.textContent = "It's a Draw! lets call it a cease fire while we still have the time!🇵🇸🇺🇦"
-            }
+            
             
         }
         
